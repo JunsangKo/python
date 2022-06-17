@@ -1,0 +1,5 @@
+def euclid(x: int, y: int) -> int:
+    if x % y == 0:
+        return int(y)
+    else:
+        return euclid(y, x % y)

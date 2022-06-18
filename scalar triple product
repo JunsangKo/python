@@ -1,3 +1,6 @@
+import math
+
+
 class Vector3:
     x = 0
     y = 0
@@ -8,22 +11,32 @@ class Vector3:
         self.y = y
         self.z = z
 
+    def magnitude(self) -> float:
+        return math.sqrt(pow(self.x, 2) + pow(self.y, 2) + pow(self.z, 2))
 
-def STP(v1: Vector3, v2: Vector3, v3: Vector3) -> float:
-    crossed = Vector3(0, 0, 0)
-    crossed.x = v1.y * v2.z - v1.z * v2.y
-    crossed.y = v1.z * v2.x - v1.x * v2.z
-    crossed.z = v1.x * v2.y - v1.y * v2.x
+    def dot_product(self, other) -> float:
+        return self.x * other.x + self.y * other.y + self.z * other.z
 
-    return crossed.x * v3.x + crossed.y * v3.y + crossed.z * v3.z
+    def cross_product(self, other):
+        crossed = Vector3(0, 0, 0)
+        crossed.x = self.y * other.z - self.z * other.y
+        crossed.y = self.z * other.x - self.x * other.z
+        crossed.z = self.x * other.y - self.y * other.x
+        return crossed
+
+    def __str__(self):
+        return f"[{self.x}, {self.y}, {self.z}]"
+
+
+def STP(vec1: Vector3, vec2: Vector3, vec3: Vector3) -> float:
+    return vec1.cross_product(vec2).dot_product(vec3)
 
 
 a, b, c = map(float, input().split())
-v = Vector3(a, b, c)
+v1 = Vector3(a, b, c)
 a, b, c = map(float, input().split())
-w = Vector3(a, b, c)
+v2 = Vector3(a, b, c)
 a, b, c = map(float, input().split())
-u = Vector3(a, b, c)
+v3 = Vector3(a, b, c)
 
-print(STP(v, w, u))
-
+print(STP(v1, v2, v3))

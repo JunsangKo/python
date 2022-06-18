@@ -1,0 +1,26 @@
+class Vector3:
+    x = 0
+    y = 0
+    z = 0
+
+    def __init__(self, x: float, y: float, z: float):
+        self.x = x
+        self.y = y
+        self.z = z
+
+
+v = Vector3(4, -2, 1)
+w = Vector3(1, 1, -5)
+u = Vector3(1, -2, 4)
+
+
+def STP(v1: Vector3, v2: Vector3, v3: Vector3) -> float:
+    crossed = Vector3(0, 0, 0)
+    crossed.x = v1.y * v2.z - v1.z * v2.y
+    crossed.y = v1.z * v2.x - v1.x * v2.z
+    crossed.z = v1.x * v2.y - v1.y * v2.x
+
+    return crossed.x * v3.x + crossed.y * v3.y + crossed.z * v3.z
+
+
+print(STP(v, w, u))

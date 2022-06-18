@@ -9,11 +9,6 @@ class Vector3:
         self.z = z
 
 
-v = Vector3(4, -2, 1)
-w = Vector3(1, 1, -5)
-u = Vector3(1, -2, 4)
-
-
 def STP(v1: Vector3, v2: Vector3, v3: Vector3) -> float:
     crossed = Vector3(0, 0, 0)
     crossed.x = v1.y * v2.z - v1.z * v2.y
@@ -23,4 +18,12 @@ def STP(v1: Vector3, v2: Vector3, v3: Vector3) -> float:
     return crossed.x * v3.x + crossed.y * v3.y + crossed.z * v3.z
 
 
+a, b, c = map(float, input().split())
+v = Vector3(a, b, c)
+a, b, c = map(float, input().split())
+w = Vector3(a, b, c)
+a, b, c = map(float, input().split())
+u = Vector3(a, b, c)
+
 print(STP(v, w, u))
+

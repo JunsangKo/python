@@ -1,0 +1,18 @@
+def IntToString(length: int, n: int) -> str:
+    digit = 1
+    temp = n
+    while temp >= 10:
+        temp /= 10
+        digit += 1
+
+    r_str = ""
+
+    if length - digit < 0:
+        return f"{n}"
+    else:
+        for i in range(length - digit):
+            r_str += "0"
+
+        r_str += f"{n}"
+
+        return r_str

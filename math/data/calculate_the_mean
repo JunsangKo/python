@@ -1,0 +1,12 @@
+def mean() -> float:
+    i = 0
+    count = 0
+    s = 0
+    while True:
+        i = input("number : ")
+
+        if i == "stop":
+            break
+        s += float(i)
+        count += 1
+    return s / count
